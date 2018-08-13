@@ -1,28 +1,16 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
-  </div>
+  <Home></Home>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld'
+
+import Home from './pages/Home'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: {Home}
 }
 </script>
-
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .el-dialog__header {
+    background-color: #545c64;
+  }
 </style>

@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "message": "执行成功",
+  "data": [
+    {
+      "path": "/base",
+      "name": "用户管理",
+      "icon": "el-icon-menu",
+      "children": [
+        {
+          "path": "/user",
+          "name": "账号管理"
+        },
+        {
+          "path": "/role",
+          "name": "角色管理"
+        },
+        {
+          "path": "/function",
+          "name": "权限管理"
+        }
+      ]
+    },
+    {
+      "path": "/base/dept",
+      "name": "部门管理",
+      "icon": "el-icon-date"
+    }
+  ]
+}
