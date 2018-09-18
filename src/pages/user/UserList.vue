@@ -25,10 +25,10 @@
       </el-form-item>
     </el-form>
     <el-row type="flex">
-      <el-button type="success" size="small"  icon="el-icon-plus" @click="dialogFormVisible = true">新增</el-button>
+      <el-button type="success" size="small"  icon="el-icon-plus" @click="show = true">新增</el-button>
     </el-row>
     <!--弹框-->
-    <AddUserDialog :dialogFormVisible.sync="dialogFormVisible" :title="dialogTitle"></AddUserDialog>
+    <AddUserDialog :show.sync="show" :title="dialogTitle"></AddUserDialog>
     <!--操作按钮区 end-->
     <BasicTable :table="table"></BasicTable>
     <el-pagination
@@ -45,11 +45,11 @@
 </template>
 
 <script>
-import BasicTable from "../../components/table/BasicTable";
-import AddUserDialog from "../../components/dialog/AddUserDialog";
+import BasicTable from '../../components/table/BasicTable'
+import AddUserDialog from '../../components/dialog/AddUserDialog'
 export default {
   name: 'UserList',
-  components: {BasicTable,AddUserDialog},
+  components: {BasicTable, AddUserDialog},
   data () {
     return {
       data: {
@@ -58,7 +58,7 @@ export default {
         dept: '',
         createDate: ''
       },
-      dialogFormVisible: false,
+      show: false,
       dialogTitle: '新增用户',
       table: {
         columns: [
@@ -84,7 +84,7 @@ export default {
           {
             name: '创建时间',
             alias: 'createTime'
-          },
+          }
         ],
         data: [
           {
@@ -93,7 +93,7 @@ export default {
             dept: '管理部',
             roles: '超级管理员',
             status: '启用',
-            createTime: '2018-01-01',
+            createTime: '2018-01-01'
           }
         ]
       },

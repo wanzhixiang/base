@@ -13,4 +13,7 @@ export default {
   .el-dialog__header {
     background-color: #545c64;
   }
+  .el-dialog__title{
+  color:rgb(255, 208, 75)
+  }
 </style>
