@@ -8,20 +8,20 @@
       active-text-color="#ffd04b"
     >
       <template v-for="item in asideMenuConfig">
-        <router-link v-if="!item.children" :to="item.path" :key="item.name">
-          <el-menu-item :index="item.path">
+        <router-link v-if="!item.children" :to="item.url" :key="item.name">
+          <el-menu-item :index="item.url">
             <i v-if="item.icon" :class="item.icon"></i>
             <span v-if="item.name" slot="title">{{item.name}}</span>
           </el-menu-item>
         </router-link>
-        <el-submenu v-else :index="item.name || item.path" :key="item.name">
+        <el-submenu v-else :index="item.name || item.url" :key="item.name">
           <template slot="title">
             <i v-if="item && item.icon" :class="item.icon"></i>
             <span v-if="item && item.name" slot="title">{{item.name}}</span>
           </template>
           <template v-for="child in item.children" v-if="!child.hidden">
-            <router-link :to="item.path + child.path" :key="child.name">
-              <el-menu-item :index="item.path + child.path">
+            <router-link :to="item.url + child.url" :key="child.name">
+              <el-menu-item :index="item.url + child.url">
                 <span v-if="child && child.name" slot="title">{{child.name}}</span>
               </el-menu-item>
             </router-link>
@@ -39,7 +39,7 @@ export default {
     asideMenuConfig: {}
   }
 }
-</script>
+</script>activeevents
 
 <style scoped>
   a {

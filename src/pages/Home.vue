@@ -32,13 +32,9 @@ export default {
     buildData: function () {
       var _this = this
       // 将tableData6构建成需要的数据
-      this.$ajax.get('/static/api/menu.json')
+      this.$get('/initUser')
         .then(function (response) {
-          const result = response.data
-          _this.asideMenuConfig = result.data
-        })
-        .catch(function (response) {
-          console.log(response)
+          _this.asideMenuConfig = response.applications[0].menuList
         })
     }
   }

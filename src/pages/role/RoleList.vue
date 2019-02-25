@@ -25,12 +25,12 @@
       </el-form-item>
     </el-form>
     <el-row type="flex">
-      <el-button type="success" size="small"  icon="el-icon-plus" @click="addUser">新增</el-button>
+      <el-button type="success" size="small"  icon="el-icon-plus" @click="addRole">新增</el-button>
     </el-row>
     <!--弹框-->
-    <AddUserDialog :show.sync="show" :title="dialogTitle" :data="userData"></AddUserDialog>
+    <AddRoleDialog :show.sync="show" :title="dialogTitle" :data="roleData"></AddRoleDialog>
     <!--操作按钮区 end-->
-    <UserTable :table="table"></UserTable>
+    <RoleTable :table="table"></RoleTable>
     <el-pagination
       background
       @size-change="handleSizeChange"
@@ -45,11 +45,11 @@
 </template>
 
 <script>
-import UserTable from './UserTable'
-import AddUserDialog from './AddUserDialog'
+import RoleTable from './RoleTable'
+import AddRoleDialog from './AddRoleDialog'
 export default {
-  name: 'UserList',
-  components: {UserTable, AddUserDialog},
+  name: 'RoleList',
+  components: {RoleTable, AddRoleDialog},
   data () {
     return {
       data: {
@@ -58,9 +58,9 @@ export default {
         dept: '',
         createDate: ''
       },
-      userData:{},
+      roleData:{},
       show: false,
-      dialogTitle: '新增用户',
+      dialogTitle: '新增角色',
       table: {
         list: [],
         total: 0,
@@ -87,37 +87,40 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
-    //新增用户
-    addUser(){
-      this.userData={
+    //新增角色
+    addRole(){
+      this.roleData={
         id: '',
-        userName: '',
-        dept: '',
-        trueName: '',
-        email: '',
-        phone: '',
-        roles:[]
+        name: '',
+        functions:[]
       }
-      this.dialogTitle = '新增用户'
+      this.dialogTitle = '新增角色'
       this.show=true
     },
-    //编辑用户
-    editUser(row){
-      this.userData={
+    //编辑角色
+    editRole(row){
+      this.roleData={
         id:row.id,
-        userName: row.userName,
-        dept: row.dept,
-        trueName: row.trueName,
-        email: row.email,
-        phone: row.phone,
-        roles: row.roles
+        name: row.name,
+        functions: row.functions
       }
-      this.dialogTitle = '修改用户';
+      this.dialogTitle = '修改角色';
       this.show=true
+    },
+    //删除角色
+    handleDelete(row){
+      var _this = this
+      this.$post('/role/del',{id:row.id})
+        .then(function (response) {
+          _this.buildData()
+        })
+        .catch(function (response) {
+          console.log(response)
+        })
     },
     buildData: function () {
       var _this = this
-     this.$get('/user/list')
+     this.$get('/role/list')
         .then(function (response) {
           _this.table = response.data
         })

@@ -25,7 +25,7 @@
 export default {
   data () {
     return {
-      companyName: '成都小胖子会计有限责任公司',
+      companyName: 'xx',
       activeIndex: '1'
     }
   },

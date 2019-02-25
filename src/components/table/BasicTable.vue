@@ -1,7 +1,7 @@
 <template>
   <el-table
     ref="multipleTable"
-    :data="table.data"
+    :data="table.list"
     :border="true"
     tooltip-effect="dark"
     style="width: 100%;margin-top: 20px"
@@ -14,6 +14,7 @@
       <el-table-column
         :label="item.name"
         :prop="item.alias"
+        :formatter="item.format"
        >
       </el-table-column>
     </template>
@@ -33,15 +34,6 @@ export default {
   },
 
   methods: {
-    // toggleSelection (rows) {
-    //   if (rows) {
-    //     rows.forEach(row => {
-    //       this.$refs.multipleTable.toggleRowSelection(row)
-    //     })
-    //   } else {
-    //     this.$refs.multipleTable.clearSelection()
-    //   }
-    // },
     handleSelectionChange (val) {
       this.multipleSelection = val
     }
